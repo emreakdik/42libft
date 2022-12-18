@@ -1,4 +1,6 @@
-# asks
+# Notlarım
+
+## Sorularım
 
 ### Size\_t Nedir?
 
@@ -22,8 +24,6 @@ int main() {
 ```
 
 İşlenebilecek en büyük nesnenin dahi boyutunu tutabileceği garantidir. Temel olarak izin verilen maksimum boyut, derleyiciye bağlıdır; derleyici 32 bit ise, o zaman unsigned int için basitçe bir typedef'dir (yani takma addır), ancak derleyici 64 bit ise, unsigned long long için bir typedef olacaktır. Özetle, size_t bir typedeftir ve okuyan ya da yazan kişinin kodları daha kolay yazıp, okuması amacıyla kullanılır.
-
-
 
 ### Const Nedir?
 
@@ -57,7 +57,7 @@ while (--n) {
 
 Bu örnekte, "while(--n)" ifadesi, "n" değişkeninin değerinin sıfıra ulaşana kadar döngüyü sürdürür ve bu nedenle, döngü 4 kez çalışır. Bu döngünün çalışma sırasında, "n" değişkeninin değeri sırasıyla 4, 3, 2 ve 1 olur ve döngü sona erdiğinde, "n" değişkeninin değeri 0 olur.
 
-###  Cast Nedir ? (char \*)
+### Cast Nedir ? (char \*)
 
 C dilinde "cast" (dönüştürme) işlemi, bir veri türünü başka bir veri türüne dönüştürmek için kullanılır. Örneğin, bir sayının tamsayı türünden ondalık türüne dönüştürülmesi gibi. Dönüştürme işlemi, verinin değerini değiştirmez, sadece verinin türünü değiştirir.
 
@@ -124,7 +124,7 @@ memcpy(arr2, &arr1[1], sizeof(int) * 2);
 
 Bu örneklerde görüldüğü gibi, "strcpy" fonksiyonu sadece karakter dizileri için kullanılır ve son karaktere kadar kopyalar, iken "memcpy" fonksiyonu tüm veri türleri için kullanılabilir ve belirtilen uzunlukta veri kopyalar.
 
-###  Typedef Nedir?
+### Typedef Nedir?
 
 "typedef" C dilinde bir anahtar kelimedir ve bir türden yeni bir tür adı tanımlar. Örneğin, aşağıdaki kod parçacığı "unsigned long" türüne "ul" adını verir:
 
@@ -140,13 +140,13 @@ ul sayi1, sayi2, toplam;
 
 Bu, yazımı daha kolay hale getirir ve kodun anlaşılırlığını artırır.
 
-###  is Fonksiyonlarında Neden Int Veri Tipi ile Argüman Alıyoruz?
+### is Fonksiyonlarında Neden Int Veri Tipi ile Argüman Alıyoruz?
 
 C dilinde bilgisayar char veri tipini algılamak için dahi karakterlerin integer karşılıklarını hesaplayarak işlem yapar. C dilinde tüm veri tiplerinin integer karşılıkları vardır. Bu da en temel de int veri tipinin olduğunu gösteriyor.
 
 Char veri tipi saklama konusunda sadece temel ascii tablosu ile sınırlıyken int tüm karakterleri saklayabilmektedir. Temel ascii tablosu dışındakiler dahil. Bu yüzden bu fonksiyonlarda int kullanarak var olan tüm karakterlerin argüman olarak girilebilmesini ve kontrol edilebilmesini sağlıyoruz.
 
-###  Overlap Nedir?
+### Overlap Nedir?
 
 Memcpy gibi bir fonksiyonda kopyalanacak olan src'nin kopyalama esnasında bozulması ve sıradaki kopyalayacağı karakterlerin değişmesidir. Bunun yüzünden kopyalama doğru gerçekleşmez.
 
@@ -201,10 +201,6 @@ printf("%s", dest);
 
 Eğer üstteki tam sayı dizisini dizi\[1]\[1] şeklinde yazdırmak isteseydik bize çıkacak olan sonuç dizideki 2. satırın 2.sütunu olacaktır. Yani 49 ve 22 olacaktır.
 
-![](<.gitbook/assets/Screenshot from 2022-12-16 01-53-55.png>)
-
-
-
 ### Nasıl Liste Oluşturulur? Struct Nedir?
 
 C dilinde yapı/struct, veri yapılarının bir koleksiyonudur. Yapılar, birbirleriyle ilişkili verilerin bir arada saklanması için kullanılır. Yapılar, bir dizi değişkenin bir arada saklanmasını sağlar ve bu değişkenlerin her birine özel bir ad verilebilir. Örneğin, bir öğrenci yapısı oluşturarak, bir öğrencinin adını, numarasını ve notlarını saklayabilirsiniz.
@@ -232,3 +228,43 @@ s.name = "John";
 s.id = 12345;
 s.grade = 85.5;
 ```
+
+### Bonus Kısım da Libft'ye Eklenen Struct Yapısı Nedir?
+
+typedef, C dilinde bir tür tanımlamayı yapmanızı sağlar. Örneğin, libft.h dosyasına eklediğimiz kod bloğunda "t_list" olarak bir tür tanımlanmıştır ve bu tür "struct s_list" yapısına eşitlenmiştir. Bu sayede, "t_list" türünü "struct s_list" yerine kullanabilirsiniz.
+
+"t_list" yapısı, içeriği "void \*content" ve bir sonraki yapının adresini tutan "struct s_list *next" gibi iki özelliğe sahiptir. Bu yapı, bir veri yapısı olarak bir bağlı liste oluşturmak için kullanılabilir.
+
+### "->" Operatörü Nedir?
+
+C dilinde, -> işareti bir yapının özelliğine erişmek için kullanılır. Örneğin, aşağıdaki kod bloğunda "ogrenci" adlı bir yapı tanımlanmıştır ve bu yapının "ad" ve "yas" adlı iki özelliği vardır:
+
+```c
+struct Ogrenci {
+    char *ad;
+    int yas;
+};
+
+int main(void) {
+    struct Ogrenci ogrenci = {"Ali", 20};
+    printf("Ad: %s, Yaş: %d\n", ogrenci.ad, ogrenci.yas);
+    return 0;
+}
+```
+
+Bu örnekte, yapının özelliklerine . operatörüyle erişilebilir. Ancak, yapının bir adresine eriştiğinizde -> operatörünü kullanmanız gerekir. Örneğin:
+
+```c
+struct Ogrenci *ogrenci_ptr = &ogrenci;
+printf("Ad: %s, Yaş: %d\n", ogrenci_ptr->ad, ogrenci_ptr->yas);
+```
+
+Bu kod bloğunda, ogrenci_ptr adlı bir yapı adresi oluşturulur ve bu adresin içindeki "ad" ve "yas" özelliklerine -> operatörüyle erişilir. Bu işaret, ogrenci_ptr adresindeki yapının özelliklerine erişmek için kullanılır ve çıktı olarak aynı sonucu verir.
+
+### Bağlı Liste Nedir?
+
+Bağlı listeler, birbirine "bağlı" veri yapılarıdır. Bu, bir elemanın bir sonraki elemanı işaret eden bir bağlantı içerdiği anlamına gelir. Bu yapı sayesinde, bir eleman eklenirken veya çıkarılırken, diğer elemanların yerleri değişmez ve sadece eklenen veya çıkarılan elemana bağlı olarak bağlantılar güncellenir.
+
+Bağlı listeler, C dilinde "t_list" yapısı kullanılarak tanımlanabilir. Bu yapı, bir "content" öğesi ve bir "next" öğesi içerir. "content" öğesi, elemanın içeriğini tutar ve "next" öğesi, bir sonraki elemana işaret eden bir bağlantı içerir.
+
+Bağlı listeler, çeşitli veri yapılarının oluşturulmasında kullanılabilir. Örneğin, bir kuyruk (queue) veya bir yığın (stack) gibi veri yapıları oluşturulabilir. Ayrıca, verilerin sıralı bir şekilde saklanması ve aranması gibi işlemlerde de kullanılabilir.
