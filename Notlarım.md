@@ -21,7 +21,7 @@ int main() {
 }
 ```
 
-İşlenebilecek en büyük nesnenin dahi boyutunu tutabileceği garantidir. Temel olarak izin verilen maksimum boyut, derleyiciye bağlıdır; derleyici 32 bit ise, o zaman unsigned int için basitçe bir typedef'dir (yani takma addır), ancak derleyici 64 bit ise, unsigned long long için bir typedef olacaktır. size\_t veri türü asla negatif değildir.
+İşlenebilecek en büyük nesnenin dahi boyutunu tutabileceği garantidir. Temel olarak izin verilen maksimum boyut, derleyiciye bağlıdır; derleyici 32 bit ise, o zaman unsigned int için basitçe bir typedef'dir (yani takma addır), ancak derleyici 64 bit ise, unsigned long long için bir typedef olacaktır. Özetle, size_t bir typedeftir ve okuyan ya da yazan kişinin kodları daha kolay yazıp, okuması amacıyla kullanılır.
 
 
 
