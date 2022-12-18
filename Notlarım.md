@@ -1,37 +1,4 @@
-
-
 # asks
-
-###  Void Veri Tipi Nedir?
-
-C dilinde, "void" veri tipi bir fonksiyonun geri dönüş değeri olmadığını belirtir ve bu nedenle, "void" veri tipinde bir değişken tanımlanamaz. Örneğin:
-
-```c
-void x; // Bu satır hata verir, çünkü "void" veri tipinde bir değişken tanımlanamaz
-```
-
-"void" veri tipi, yalnızca fonksiyonların geri dönüş değeri olarak kullanılır ve değişkenler için geçerli değildir. Eğer bir değişken için geri dönüş değeri gerekmeyecekse, genellikle "int" veri tipi kullanılır. Örneğin:
-
-```c
-int x; // Bu satır geçerlidir ve x değişkeni "int" veri tipinde bir değişkendir
-```
-
-Ancak, "void" veri tipinde bir fonksiyonun argüman listesi olabilir ve bu nedenle, "void" veri tipinde bir değişkenin fonksiyonun argümanı olarak geçirilebileceğini unutmayın. Örneğin:
-
-```c
-void print_number(void *ptr) { // ptr değişkeni "void" veri tipinde bir değişkendir
-    int n = *(int *)ptr;
-    printf("%d\n", n);
-}
-
-int main() {
-    int x = 5;
-    print_number(&x); // x değişkeninin adresi "void" tipinde ptr değişkenine geçirilir
-    return 0;
-}
-```
-
-
 
 ### Size\_t Nedir?
 
