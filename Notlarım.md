@@ -91,7 +91,7 @@ int x = dst[2];
 // dst dizisinin 3. elemanına değer atamak için
 dst[2] = 5;
 
-// dst dizisinin 3. elemanına aynı zamanda
+// dst dizisinin 3. elemanına ulaşmanın farklı bir yolu.
 int x = *(dst + 2);
 ```
 
