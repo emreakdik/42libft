@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 10:30:54 by yakdik            #+#    #+#             */
+/*   Updated: 2022/12/20 10:31:58 by yakdik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
@@ -13,17 +25,3 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	char *s1 = "Emre Akdik";
-// 	char *s2 = "Emre Kakdik";
-
-// 	printf("%d",ft_memcmp(s1,s2,9));
-// }
-
-// s1 vs s2 belleklerini n değeri kadar karşılaştırır.
-// Değerler aynı ise 0 döndürür.
-// Farklı karakter bulursa decimal farklarını döndürür.

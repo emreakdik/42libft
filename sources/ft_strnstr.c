@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 10:33:49 by yakdik            #+#    #+#             */
+/*   Updated: 2022/12/20 10:33:49 by yakdik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
@@ -19,11 +31,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return ((char *) NULL);
 }
-
-// int	main()
-// {
-// 	char *haystack = "emre akdiknabernapıyorsun";
-// 	char *needle = "naber";
-
-// 	printf("%s", ft_strnstr(haystack, needle, 15));
-// }

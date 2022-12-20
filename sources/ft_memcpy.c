@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:35:57 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/12 15:52:25 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 10:32:14 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-
-//  #include <stdio.h>
-
-//  int	main()
-//  {
-//  	char src[] = "Emre Akdik";
-//  	char dest[100];
-
-//  	ft_memcpy(&src[2], src, 9);
-//  	printf("%s", dest);
-//  }
-
-// Dest dizisine, src dizisini n değeri kadar kopyalar ve desti döndürür.

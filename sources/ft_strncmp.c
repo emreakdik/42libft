@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:06:37 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/07 16:03:24 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 10:33:43 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,3 @@ int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 		i++;
 	return (s1[i] - s2[i]);
 }
-
-// s1 ve s2 dizelerinin n'inci indekse kadar karşılaştırır.
-// farklı karakterlerin decimal farkını döndürür.

@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:32:01 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/12 21:44:11 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 10:33:30 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,3 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-
-
-// int	main()
-// {
-// 	char *str = "Emre Akdik";
-// 	int i = ft_strlen(str);
-
-// 	printf("%d", i);
-// }

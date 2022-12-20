@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 20:17:55 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/20 00:13:54 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 10:33:20 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,3 @@ size_t	ft_strlcat(char *dest, char *src, size_t dstsize)
 	dest[c] = '\0';
 	return (ft_strlen(dest) + ft_strlen(&src[d]));
 }
-
-// int	main(){
-
-// 	char dst[] = "Emre";
-// 	char src[] = "Akdik";
-
-// 	// printf("%p %p", dst, src);
-	// printf("%lu\n", ft_strlcat(dst, src, 30);
-// 	// printf("%s\n", dst);
-// 	 // printf("%lu\n", strlcat(dst, src, 5));
-// 	// printf("%s", dst);
-// }

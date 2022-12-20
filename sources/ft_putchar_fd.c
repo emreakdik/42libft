@@ -1,11 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 10:32:33 by yakdik            #+#    #+#             */
+/*   Updated: 2022/12/20 10:32:34 by yakdik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
-
-
-// belirtilen dosya tanımlayıcısına (file descriptor) c karakterini yazar.
-// file descriptor'u bir dosyanın ona ulaşmamız için ihtiyacımız olan kimlik numarası olarak düşünebiliriz.
-// dosyalara ulaşırken 0-1-2 kullanarak erişimi çeşitlendirebiliriz. hatırla write(1, 'c', 1)

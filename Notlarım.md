@@ -168,11 +168,11 @@ printf("%s", dest);
 * Bundan sonraki tüm adımlarda her kopyalama işlemi yapıldığında sıradaki kopyalama için alınacak karakterleri değiştirecek ve istenilen sonucu alamayacağız.&#x20;
 * Ana mantık src'nin dst'den önce olması ve dst'ye src'den kopyalama yaparken dst ve src'nin üst üste binip srcnin bozulmasıdır. Çıktıyı örneği derleyerek kontrol edebilirsiniz.
 
-#### Bazı fonksiyonlarda değişkenleri nasıl karşılaştırıyoruz?
+### Bazı fonksiyonlarda değişkenleri nasıl karşılaştırıyoruz?
 
 Örneğin memmove fonksiyonunda if(dst < src) gibi bir if koşulumuz var. Burada aslında dst ve src'nin adreslerinin integer karşılıklarını karşılaştırıyoruz. Eğer dst değişkeninin int adres karşılığı src değişkeninin int adres karşılığından küçükse dst değişkeni bellekte daha önde konumlanmış demektir. Bu koşul da memmove'un overlap'e karşı olan savunmasında yardımcı olacaktır.
 
-#### strnstr fonksiyonunda neden i < (len - len\_n) yapıyoruz?
+### strnstr fonksiyonunda neden i < (len - len\_n) yapıyoruz?
 
 * len-n burada arayacağımız string'in uzunluğunu tutuyor.
 * bir string'i bir string'in içinde arıyorsak, aranacak alan uzunluğu (yani len) aranacak string'in uzunluğundan (yani len\_n) daha büyük olmak zorunda.
@@ -181,7 +181,7 @@ printf("%s", dest);
 
 * Herhangi bir string içinde "Emre" stringini arayacağız. Ama fonksiyona araması için sadece 3 karakterlik bir alan verirsek, "Emre" stringi arama yapılacak string'in en başında olsa bile "Emr" bulup "Emre" bulamayacağı için bize doğru çıktıyı vermez.
 
-#### İki boyutlu dize nedir?
+### İki boyutlu dize nedir?
 
 İki boyutluyu açıklamadan önce tek boyutlu dizelerden bahsetmeliyim. Tek boyutlu dizeler aslında her zaman kullandığımız dizi tanımlama şeklimizdir.
 

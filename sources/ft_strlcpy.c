@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 10:33:27 by yakdik            #+#    #+#             */
+/*   Updated: 2022/12/20 10:33:27 by yakdik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
@@ -16,15 +28,3 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 	}
 	return (ft_strlen (src));
 }
-
-#include <stdio.h>
-
-int main()
-{
-	char dest[] = "Merhaba";
-	char src[] = "42Kocaeli";
-
-	printf("%zu",ft_strlcpy(dest,src,4));
-}
-
-// n kadar src'yi dest'e kopyalar. src'nin uzunluğunu döndürür.

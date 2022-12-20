@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 10:31:54 by yakdik            #+#    #+#             */
+/*   Updated: 2022/12/20 10:31:55 by yakdik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -8,19 +20,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (((unsigned char*)s)[i] == (unsigned char)c)
-			return ((void*)(s + i)); // s + i = s[i]
+			return ((void*)(s + i));
 		i++;
 	}
 	return (0);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	char *s = "Sami Guntepe";
-// 	printf("%s", (char *)ft_memchr(s,'u',8));
-// }
-
-// s dizinde c karakterini arar ve bulduğunda olduğu adresi döndürür.
-// ekran da c karakterinin adresinden sonrası çıktı verir.

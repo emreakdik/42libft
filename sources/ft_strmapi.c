@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 10:33:39 by yakdik            #+#    #+#             */
+/*   Updated: 2022/12/20 10:33:39 by yakdik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-//f fonksiyonunu stringin butun karakterlerine uygular.
+
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
@@ -19,13 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-/* char fonks(unsigned int i, char a)
-{
-	a -= 32;
-}
-int main()
-{
-	char *str = "aktas";
-	
-	printf("%s\n", ft_strmapi(str,fonks));
-}*/

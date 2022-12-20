@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:21:49 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/07 01:09:48 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 10:33:52 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,3 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *)s);
 	return (0);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	char s[] = "Merhaba42Kocaeli";
-// 	printf("%s",ft_strrchr(s,'4'));
-// }
