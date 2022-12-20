@@ -6,11 +6,11 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:38:37 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/06 15:38:44 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 14:47:39 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);

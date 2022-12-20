@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 22:06:36 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/12 22:27:09 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 14:45:01 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *str)
 	len = ft_strlen(str);
 	str2 = (char *)malloc(len + 1);
 	if ((str2) == NULL)
-            return (NULL);
+		return (NULL);
 	ft_memcpy(str2, str, len + 1);
 	return (str2);
 }

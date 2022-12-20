@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:33:04 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/20 10:33:04 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 14:36:17 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	**ft_split_words(char **res, char const *s, char c, int word_ct)
 	int	word_ln;
 
 	i = 0;
-	j = 0 ;
+	j = 0;
 	word_ln = 0;
 	while (s[j] && i < word_ct)
 	{
@@ -65,7 +65,7 @@ static char	**ft_split_words(char **res, char const *s, char c, int word_ct)
 		res[i] = (char *)malloc(sizeof(char) * (word_ln + 1));
 		if (!res[i])
 			return (0);
-		ft_make_words (res[i], s, j, word_ln);
+		ft_make_words(res[i], s, j, word_ln);
 		word_ln = 0;
 		i++;
 	}
@@ -84,6 +84,6 @@ char	**ft_split(char const *s, char c)
 	res = (char **)malloc(sizeof(char *) * (word_ct + 1));
 	if (!res)
 		return (0);
-	ft_split_words (res, s, c, word_ct);
+	ft_split_words(res, s, c, word_ct);
 	return (res);
 }

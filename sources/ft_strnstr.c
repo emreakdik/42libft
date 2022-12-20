@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:33:49 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/20 10:33:49 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 14:46:19 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	len_n = ft_strlen(needle);
 	if (len_n == 0)
-		return ((char *) haystack);
+		return ((char *)haystack);
 	if (len == 0)
 		return ((char *) NULL);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:46:12 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/20 07:09:44 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 14:36:27 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result[len] = '\0';
 	return (result);
 }
-
-
-
-

@@ -6,15 +6,15 @@
 /*   By: yakdik <yakdik@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:21:30 by yakdik            #+#    #+#             */
-/*   Updated: 2022/12/20 10:33:09 by yakdik           ###   ########.fr       */
+/*   Updated: 2022/12/20 14:36:18 by yakdik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	while (s[i] != '\0' && c != s[i])
 		i++;
 	if (c == s[i])
