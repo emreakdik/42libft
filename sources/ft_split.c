@@ -75,3 +75,21 @@ char	**ft_split(char const *s, char c)
 	ft_split_words (res, s, c, word_ct);
 	return (res);
 }
+
+// Bu fonksiyon, verilen bir dizide (s parametresi) belirli bir ayracı (c parametresi) kullanarak diziyi parçalara ayırır ve ayrıştırılmış parçaları bir dizi olarak döndürür. 
+
+// int main(void) {
+//   char **result = ft_split("Bu bir deneme metnidir", ' ');
+//   int i;
+//   for (i = 0; result[i] != NULL; i++) {
+//     printf("%s\n", result[i]);
+//   }
+
+//   // Belleği serbest bırakalım
+//   for (i = 0; result[i] != NULL; i++) {
+//     free(result[i]);
+//   }
+//   free(result);
+
+//   return 0;
+// }

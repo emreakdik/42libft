@@ -268,3 +268,36 @@ Bağlı listeler, birbirine "bağlı" veri yapılarıdır. Bu, bir elemanın bir
 Bağlı listeler, C dilinde "t_list" yapısı kullanılarak tanımlanabilir. Bu yapı, bir "content" öğesi ve bir "next" öğesi içerir. "content" öğesi, elemanın içeriğini tutar ve "next" öğesi, bir sonraki elemana işaret eden bir bağlantı içerir.
 
 Bağlı listeler, çeşitli veri yapılarının oluşturulmasında kullanılabilir. Örneğin, bir kuyruk (queue) veya bir yığın (stack) gibi veri yapıları oluşturulabilir. Ayrıca, verilerin sıralı bir şekilde saklanması ve aranması gibi işlemlerde de kullanılabilir.
+
+### Malloc'ta Neden Tür Dönüşümü(Type Casting) Kullanırız?
+
+Malloc fonksiyonu, bellekte yer açmak için kullanılan bir C fonksiyonudur ve void * tipinde bir değer döndürür. Bu, malloc fonksiyonunun hangi türde bir değişken için yer açtığını bilemediğimiz anlamına gelir. Bu nedenle, malloc fonksiyonunun döndürdüğü değerin bir tür belirtilmesi gerekir. Bu tür belirtimi tür dönüşümü ile yapılır. Örneğin:
+
+```c
+int *ptr;
+ptr = (int *) malloc(sizeof(int));
+```
+
+Bu örnekte, malloc fonksiyonu bir int değişkeni için gerekli olan bellek miktarını hesaplar ve bu miktar kadar bellek alanı ayırır. Daha sonra, malloc fonksiyonunun döndürdüğü değer int türüne dönüştürülerek ptr değişkenine atanır.
+
+Not: Tür dönüşümünün kullanılması malloc fonksiyonunun döndürdüğü değerin bir tür belirtilmesini sağlar, ancak bu değerin gerçekten o türden bir değer olup olmadığını doğrulamaz. Bu nedenle, malloc fonksiyonunun döndürdüğü değeri kullanmadan önce mutlaka doğru türden bir değer olduğundan emin olunmalıdır.
+
+
+### Del fonksiyonu ile nasıl bir linked list elemanı silerim?
+
+del fonksiyonu, bir linked list elemanının içeriğini (content alanını) silmek için kullanılan bir fonksiyondur. Bu fonksiyon, bir void * tipinde bir parametre alır ve içeriği silmek için kullanılır. Örneğin, bir linked listte int türünde değerler tutuluyorsa, del fonksiyonu aşağıdaki gibi olabilir:
+
+```c
+void del_int(void *content)
+{
+free(content);
+}
+```
+
+Bu fonksiyon, void * tipinde bir değişkeni int türüne dönüştürerek free fonksiyonu ile bellekten siler.
+
+Bu fonksiyonu kullanmak için, ft_lstdelone gibi bir fonksiyonda del fonksiyonunun adresini parametre olarak vermelisiniz. Örneğin:
+
+ft_lstdelone(lst, del_int);
+
+Bu örnekte, lst elemanının içeriği del_int fonksiyonu ile silinir.
