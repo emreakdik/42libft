@@ -301,3 +301,14 @@ Bu fonksiyonu kullanmak için, ft_lstdelone gibi bir fonksiyonda del fonksiyonun
 ft_lstdelone(lst, del_int);
 
 Bu örnekte, lst elemanının içeriği del_int fonksiyonu ile silinir.
+
+### Node nedir?
+
+Bilgisayar biliminde, bir düğüm veri yapısının temel bir birimidir, örneğin bir bağlı liste veya ağaç veri yapısı gibi.
+
+Bağlı liste, her elemanın ayrı bir nesne olarak adlandırılan bir düğüm olduğu lineer bir veri yapısıdır. Her düğümün iki alanı vardır: bir elemanı depolamak için bir veri alanı ve bir sonraki düğümü gösteren bir sonraki alan. Liste sonundaki son düğümün bir sonraki alanı null olarak ayarlanmıştır, bu da listenin sonunu gösterir.
+
+Ağaç veri yapısında, bir düğüm veri depolayan ve bir veya daha fazla çocuk düğüme götüren bir referans olan bir nesnedir. Ağaçtaki en üst düğüm root düğüm olarak adlandırılır ve çocukları olmayan düğümler ise leaf düğümler olarak adlandırılır.
+
+Bağlı listelerde ve ağaç veri yapılarında, düğümler veriyi efektif bir şekilde ekleme, silme ve veriye erişim için depolamak ve düzenlemek için kullanılır.
+
