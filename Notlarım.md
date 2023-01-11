@@ -316,3 +316,50 @@ Ağaç veri yapısında, bir node veri depolayan ve bir veya daha fazla çocuk n
 
 Bağlı listelerde ve ağaç veri yapılarında, nodelar veriyi efektif bir şekilde ekleme, silme ve veriye erişim için depolamak ve düzenlemek için kullanılır.
 
+# Makefile
+- Makefile ile yaptigimiz islemlerin sebeplerini anlamamiz icin bir kac konuya hakim olmamiz gerekiyor. Bunlarin derleyici asamalari ve statik kutuphane oldugunu dusunuyorum.
+## Derleyici Aşamaları
+### Adim 1: Preprocess
+Bu ilk aşamada, GCC kaynak kodunu (genellikle .c dosyası olarak kaydedilir) alır ve başlık dosyaları (ör. <stdio.h>, <stdlib.h>) dahil olmak üzere yorumları kaldırir, makro adını kodla genişletir ( örneğin #define). 
+### Adim 2: Compiler
+Bu asamada, kodun her satiri assembly diline cevrilir. Assemly dili, makine diliyle birebir ortusen ingilizce numerik bir dildir. Bu asama da ortaya cikan dosya uzantisi ".s"dir.
+### Adim 3: Assembler
+Bu asamada assembly kodu direkt olarak makine diline (object code'a) cevrilir. Artik kodumuz bilgisayarin direkt olarak anlayabilecegi ve calistirabilecegi bir duruma gelmis olur. Eger kodumuzun sadece makine diline cevrilmesini istiyorsan gcc -c komutunu kullanabiliriz. Bu asama da ortaya ".o" uzantili dosyalar cikar.
+### Adim 4: Linker
+
+Bu asama iki amaca hizmet eder:
+
+- Birden fazla c dosyasini birlikte calistirmak istiyorsaniz bu dosyalari birbirine baglayabilir.
+- Kodlarinizda bir kutuphane kullandiysaniz bunlarin ciktisini alip kodlarinizla baglayarak cikti almanizi saglayabilir.
+
+Linker sadece okunabilir ve calistirilabilir olan makine dili (yani objective code) uzerinden baglanti yapabilir. Zaten biz de bu yuzden makefile'imizdaki komutlarla kutuphanemizdeki fonksiyonlarin makine diline cevrilmis hallerini libft.a(statik kutuphane) dosyasinda arsivleyecegiz.
+
+## Statik Kutuphane
+Kütüphaneler link aşamasında linker tarafından değerlendirilmektedir. Statik bir kütüphane object modül dosyalarından oluşmaktadır. Gerek .lib, gerekse **.a** dosyaları object modülleri tutan kap gibidir. Yani bir .lib ya da .a dosyasına bir object modül eklenebilir veya çıkarılabilir. Yani statik kütüphanelerde tek bir fonksiyon eklemek ya da çıkartmak diye bir şey yoktur. Bir grup fonksiyonlar bir C dosyasına yazılır, dosya derlenir. **.o** ya da . obj haline getirilmiş dosya statik kütüphaneye eklenir.
+
+Windows sistemlerinde .lib dosyası yaratmak ve içerisine object modül eklemek için lib.exe isimli, UNIX\Linux sistemlerinde ise **ar** isimli utility bu işlemi yapmaktadır. Statik bir kütüphaneye çağrı yapıldığında çağrı isteği derleyici tarafından object modüle yazılır, linker bu fonksiyonu önce projeyi oluşturan diğer object modüllerde sonra statik kütüphanelerde arar. Eğer ilgili fonksiyon statik kütüphanede bulursa linker tarafından bu fonksiyonun içerisinde bulunduğu object modüle statik kütüphane dosyasından alınarak çalıştırılabilir(executable) dosyaya yazılır.
+
+Yani kisaca kodlarimizin derlenmis hallerini yani .o dosyalarini statik kutuphane yani libft.a'da "gcc -c" ve "ar" komutlariyla arsivleriz. Linker'da ihtiyaci olan fonksiyonlari direkt calistirilabilir olarak libft.a'dan ceker ve oylelikle ciktiya dahil eder. gcc -c ve ar komutlarini arastirin ve makefile'i kurcalayarak nasil kullanildiklarina bakin.
+
+## Makefile Icerigi Basit Aciklama
+
+NAME", "FLAG", "SRC" ve "BONUS" değişkenleri, projenin oluşturulmasında kullanılan çeşitli dosya isimlerini depolar.
+
+"SRC" değişkeni proje dizinindeki C dosyalarının (ft_lst ile başlayan dosyalar hariç) listesini içerir, "BONUS" değişkeni ft_lst ile başlayan C dosyalarının listesini içerir ve "OBJ" değişkeni son binary oluşturmak için kullanılan obj dosyalarını içerir.
+
+"$(NAME)" hedefi son binary'nin oluşturulması için kullanılır. "gcc" komutu kaynak dosyaları derlemek ve obj dosyalarını oluşturmak için kullanılır, daha sonra "ar" komutu statik library, libft.a oluşturmak için kullanılır.
+
+"bonus" hedefi "$(NAME)" hedefi ile benzerdir ancak sadece "BONUS" değişkeninde listelenen dosyaları derler.
+
+"clean" hedefi obj dosyalarını silmek için kullanılır.
+
+"fclean" hedefi obj dosyalarını ve son binary'i silmek için kullanılır.
+
+"re" hedefi projeyi yeniden oluşturmak için önce "fclean" hedefini çalıştırarak ve sonra "all" hedefine devam eder.
+
+Son olarak, ".PHONY" satırı "all", "bonus", "clean", "fclean" ve "re" hedeflerinin aynı isimde dosya olmadıklarını ve her zaman çalıştırılması gerektiğini belirtir.
+
+
+
+
+
