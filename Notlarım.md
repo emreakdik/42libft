@@ -44,9 +44,9 @@ const float pi = 3.14159; // pi değişkeni, pi sabitinin değerini temsil eder
 
 "_const_" anahtar kelimesi, C dilinin önemli bir özelliğidir ve programlarınızda sıklıkla kullanılır. Değişkenlerin değerlerinin değiştirilememesi, programınızın daha güvenli ve hatasız çalışmasını sağlar ve ayrıca, kodunuzun okunabilirliğini ve anlaşılırlığını artırır.
 
-### while (n--) nedir?
+### while (--n) nedir?
 
-"while(--n)" ifadesi, bir döngüyü sürdürmek için kullanılan bir yapıdır. Bu yapı, belirtilen koşulu sağladığı sürece döngüyü tekrar etmeyi sürdürür. Koşul, "n" değişkeninin değerine göre belirlenir ve bu değişken her döngü adımında bir azaltılır ("n--" ifadesi ile aynı anlama gelir). Bu nedenle, "while(--n)" ifadesi, "n" değişkeninin değeri sıfıra ulaşana kadar döngüyü sürdürecektir. Örneğin:
+"while(--n)" ifadesi, bir döngüyü sürdürmek için kullanılan bir yapıdır. Bu yapı, belirtilen koşulu sağladığı sürece döngüyü tekrar etmeyi sürdürür. Koşul, "n" değişkeninin değerine göre belirlenir ve bu değişken her döngü adımında bir azaltılır ("n--" ifadesi ile aynı anlama gelir, iki iterasyonda donguyu degisken 0 olana kadar devam ettirir.). Bu nedenle, "while(--n)" ifadesi, "n" değişkeninin değeri sıfıra ulaşana kadar döngüyü sürdürecektir. Örneğin:
 
 ```c
 int n = 5;
