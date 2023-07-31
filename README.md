@@ -43,6 +43,48 @@ Yukarıdaki örnek, `malloc()` işlevini kullanarak 5  `int` veri türü için b
 Arkaplanda, `malloc()` işlevi çalışma zamanında işletim sistemi tarafından sağlanan bellek havuzundan uygun miktarda bellek alanı talep eder. Bu bellek havuzu, genellikle programın heap alanı olarak adlandırılan bellek bölgesinde yer alır. `malloc()` işlevi bu bellek havuzundan belirtilen boyut kadar bellek alanı talep eder ve bu alanın başlangıç adresini gösteren bir işaretçi döndürür. Eğer talep edilen bellek alanı mevcut değilse veya yeterli boş bellek yoksa, `malloc()` işlevi `NULL` işaretçisi döndürerek bellek tahsisi başarısız olduğunu belirtir.
 
 Belleği kullanımınız tamamlandığında, `free()` işlevini kullanarak işaretçi ile gösterilen bellek alanını serbest bırakmanız gerekir. `free()` işlevi, bellek alanını programın heap alanında geri verir, böylece başka amaçlar için kullanılabilir hale gelir.
+## Isaretci/Adres Aritmetigi nedir? (dst + i)
+Adres aritmetiği, işaretçi türü değişkenlerle gerçekleştirilir. İşaretçi, bellekte bir verinin yerini işaret eden bir değişkendir. Bellek adresi tamsayılar gibi düşünülebilir ve işaretçi bu adresleri saklayarak ve manipüle ederek bellek üzerinde gezinmeyi sağlar.
+
+C dilinde adres aritmetiği için kullanılan bazı operatörler şunlardır:
+
+1.  '&' (Ampersand) operatörü: Bu operatör, bir değişkenin bellek adresini elde etmek için kullanılır. Örneğin: `int x = 10; int *ptr = &x;` ptr, x'in bellek adresini tutar.
+    
+2.  '*' (Asterisk) operatörü: Bu operatör, bir işaretçinin gösterdiği adresteki değeri elde etmek için kullanılır. Örneğin: `int value = *ptr;` value, ptr'nin gösterdiği bellek adresindeki değeri alır.
+    
+3.  İşaretçi aritmetiği: İşaretçiler, tamsayılarla (integer) aritmetik işlemler gerçekleştirebilir. Bu işlemler, işaretçinin gösterdiği bellek adresini değiştirerek bellek üzerinde gezinmeyi sağlar. Örneğin: `ptr++;` işlemi, ptr'nin gösterdiği bellek adresini bir tamsayı büyütür, böylece bir sonraki bellek hücresine işaret eder.
+    
+4.  Dizi indeksleme: Diziler, bellekte ardışık hücrelerde depolanan veri koleksiyonlarıdır. Bir diziye işaretçi aritmetiği kullanarak erişilebilirsiniz. Örneğin: `int arr[] = {1, 2, 3}; int *ptr = arr;` ile ptr, dizinin ilk elemanının adresini tutar. `ptr[1]` ifadesi, ikinci elemana erişmeyi sağlar.
+    
+
+Örnek bir adres aritmetiği kullanımı:
+```c
+int arr[] = {10, 20, 30, 40};
+int *ptr = arr; // ptr, dizinin ilk elemanının adresini alır
+
+// İkinci elemanin yazdirilamsi
+printf("Ikinci eleman: %d\n", *(ptr + 1)); // 20
+
+// Dördüncü elemanın yazdirilmasi
+printf("Dorduncu eleman: %d\n", *(ptr + 3)); // 40` 
+```
+Adres aritmetiği, bellek üzerinde veri manipülasyonu ve veri yapılarının etkin bir şekilde kullanılmasını sağlar. Ancak, dikkatli kullanılmazsa hatalara ve güvenlik açıklarına yol açabileceği için dikkatli olmak önemlidir.
+
+### Isaretci aritmetiginde adres her zaman 1 mi artar?
+Her hücre, genellikle bir byte veya daha büyük bir veri parçasını temsil eder. İşaretçi, işaret ettiği hücrenin veri türüne göre ilerler ve işaret ettiği hücrenin boyutuna göre adres aritmetiği yapar.
+
+Işaretçi aritmetiği yaparken işaretçi, işaret ettiği bellek hücresinin boyutunu dikkate alır. Bu nedenle işaretçi bir tamsayı artışı yaparken, hafızada bir tam sayı değeri kadar öteler.
+
+Örnek olarak, bir `int` tipinde işaretçi düşünelim. `int` genellikle 4 byte (32 bit) büyüklüğünde olduğunu varsayalım. Bu durumda işaretçi bir tam sayı artışı yaptığında, işaret ettiği bellek hücresinin adresi, 4 byte ilerleyecektir.
+```c
+int arr[] = {10, 20, 30, 40};
+int *ptr = arr;
+
+ptr = ptr + 1;
+
+printf("Ikinci eleman: %d\n", *ptr);
+```
+Burada `ptr = ptr + 1;` ifadesi, işaretçinin gösterdiği bellek adresini 4 byte (int'in boyutu) artırır. Sonuç olarak, `ptr`, artık dizinin ikinci elemanını işaret eder.
 ## Str fonksiyonlar ile mem fonksiyonlar arasindaki fark nedir?
 C dilinde, `mem` fonksiyonları ve `str` fonksiyonları, bellek manipülasyonu ve karakter dizisi (string) işlemleri için kullanılan iki farklı kategoride işlevlerdir. İşte bu iki fonksiyon kategorisi arasındaki farklar:
 
