@@ -3,6 +3,117 @@
 - Zorunlu kisimin bize temel beceri ve bilgi konusunda gelistirmeye calistigini dusunuyorum. Cunku libft'yi iyi sekilde anlamaya calismak ve hizli gecmemek siradaki projeleri anlamamda cok isime yaradi.
 - Asagidaki notlar projeyi tamamlarken merak ettigim ve cevabini aradigim sorulardan olusuyor. Butunuyle libft vermenizi saglayacak notlar degil.
 
+## Bir char nasil bir integer'a donusturulur?
+Diyelim ki elimizde '5' karakteri var. Bu karakteri integer'a donusturmek icin yapmamiz gereken tek sey '0' karakterinden cikartmaktir (bu cikartma isleminde karakterlerin decimal karsiliklari arasinda yapilmaktadir). Cikan sonuc ise integer olarak tutulabilmektedir ve bu bize istedigimiz integer sonucu vermektedir.
+
+Ornek: 
+```c
+('5' - '0') => (53 - 48) => 5
+```
+Bu işlem, '0' karakteri ile istediğimiz rakam karakteri arasındaki farkı bulmamıza olanak tanır ve sonuç olarak karakteri temsil eden sayısal değeri elde ederiz. Örneğin '9' karakteri için 53 - 48 = 5 olur ve bu şekilde '5' karakterini integer türüne dönüştürmüş oluruz.
+
+## Malloc Nedir ve Nasil Calisir?
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *ptr;
+    int size = 5;
+
+    // 5 tane int türünde bellek alanı tahsisi yap
+    ptr = (int *)malloc(size * sizeof(int));
+
+    if (ptr == NULL) {
+        printf("Bellek tahsisi yapilamadi.\n");
+        return 1;
+    }
+
+    // Bellekte tahsis edilen alanı kullanabilirsiniz
+
+    // Bellek alanını serbest birak
+    free(ptr);
+
+    return 0;
+}
+```
+Yukarıdaki örnek, `malloc()` işlevini kullanarak 5  `int` veri türü için bellek alanı ayırır. Bellek alanı başarıyla tahsis edildikten sonra, bu alanı kullanabilirsiniz. Belleği kullanımınız tamamlandığında, `free()` işlevini kullanarak tahsis edilen bellek alanını serbest bırakmanız önemlidir. Bellek alanını serbest bırakmazsanız, programınız hafıza sızıntısı (memory leak) ile karşı karşıya kalabilir, yani tahsis edilen bellek alanınız program sonlanana kadar hafızada kalabilir.
+
+Arkaplanda, `malloc()` işlevi çalışma zamanında işletim sistemi tarafından sağlanan bellek havuzundan uygun miktarda bellek alanı talep eder. Bu bellek havuzu, genellikle programın heap alanı olarak adlandırılan bellek bölgesinde yer alır. `malloc()` işlevi bu bellek havuzundan belirtilen boyut kadar bellek alanı talep eder ve bu alanın başlangıç adresini gösteren bir işaretçi döndürür. Eğer talep edilen bellek alanı mevcut değilse veya yeterli boş bellek yoksa, `malloc()` işlevi `NULL` işaretçisi döndürerek bellek tahsisi başarısız olduğunu belirtir.
+
+Belleği kullanımınız tamamlandığında, `free()` işlevini kullanarak işaretçi ile gösterilen bellek alanını serbest bırakmanız gerekir. `free()` işlevi, bellek alanını programın heap alanında geri verir, böylece başka amaçlar için kullanılabilir hale gelir.
+## Str fonksiyonlar ile mem fonksiyonlar arasindaki fark nedir?
+C dilinde, `mem` fonksiyonları ve `str` fonksiyonları, bellek manipülasyonu ve karakter dizisi (string) işlemleri için kullanılan iki farklı kategoride işlevlerdir. İşte bu iki fonksiyon kategorisi arasındaki farklar:
+
+1.  `mem` Fonksiyonları:
+    
+    -   `mem` fonksiyonları, bellek manipülasyonu için kullanılır. Bellek manipülasyonu, bellek bloklarını kopyalama, karşılaştırma ve doldurma gibi işlemleri içerir.
+    -   Bu fonksiyonlar, işaretçilerle çalışır ve genellikle bellek blokları üzerinde byte bazında işlem yaparlar.
+    -   `memcpy`, `memmove`, `memcmp`, `memset` gibi `mem` fonksiyonları bu kategoriye örnek olarak verilebilir.
+    -   Bellek işlemleri, karakter dizisi olmayan her türlü veri kopyalama, karşılaştırma veya işleme için kullanılabilir.
+2.  `str` Fonksiyonları:
+    
+    -   `str` fonksiyonları, karakter dizileri (string) ile çalışmak için kullanılır. Karakter dizileri, bir dizi karakterin sonlandırıcı karakter (`'\0'` veya NULL karakter) ile bitirildiği veri yapılarıdır.
+    -   Bu fonksiyonlar, karakter dizileri üzerinde işlem yapar ve sık kullanılan string manipülasyon işlemleri için optimize edilmiştir.
+    -   `strcpy`, `strcmp`, `strlen`, `strcat` gibi `str` fonksiyonları bu kategoriye örnek olarak verilebilir.
+    -   Karakter dizileri üzerinde yapılan işlemler, karakter dizilerinin sıfır ile sonlandırılmasına uygun şekilde gerçekleştirilir.
+
+## File Descriptor (fd) nedir?
+"file descriptor" (dosya tanımlayıcısı), dosyalara veya diğer giriş/çıkış kaynaklarına erişmek için kullanılan bir tamsayı değeridir. Dosya tanımlayıcısı, işletim sistemi tarafından oluşturulan bir işaretçi gibidir,
+
+Dosya tanımlayıcıları, işletim sisteminde açık olan her dosya için benzersiz bir numaralandırmaya sahiptir. Örneğin, UNIX ve Linux sistemlerinde, 0, 1 ve 2 numaralı dosya tanımlayıcıları özel olarak aşağıdaki şekilde atanır:
+
+-   0: Standart giriş (stdin) - Klavyeden okuma için kullanılır.
+-   1: Standart çıkış (stdout) - Ekran yazdırma için kullanılır.
+-   2: Standart hata (stderr) - Hata mesajlarını göndermek için kullanılır.
+
+Ayrıca, 3 ve sonraki numaralar, açık olan diğer dosyalar için atanır. Bu dosya tanımlayıcıları, `open()` veya `fopen()` gibi dosya açma işlevleri kullanılarak elde edilir. Dosya tanımlayıcıları, `int` türünden değişkenlerde saklanır.
+
+## Fd icin open fonksiyonu nasil kullanilir?
+Fonksiyonun prototipi şu şekildedir:
+```c
+int open(const char *path, int flags, mode_t mode);` 
+```
+Burada, `path` parametresi açılacak dosyanın yolu ve adını içeren bir karakter dizisidir. `flags` parametresi açma modunu belirlemek için kullanılır ve hangi türde dosya erişimi yapılacağını belirtir. `mode` parametresi ise yeni bir dosya oluşturulduğunda izinlerin belirlenmesi için kullanılır (bu parametre sadece dosya oluşturulduğunda önemlidir).
+
+`open()` işlevi, bir dosya tanımlayıcısı (file descriptor) döndürür. Dosya tanımlayıcısı, dosyaya erişim ve dosya üzerinde işlem yapmak için kullanılır. Eğer işlem başarısız olursa, -1 değeri döndürür.
+
+---
+ **en sık kullanılan `flags` parametreleri ve açıklamaları:**
+
+1.  `O_RDONLY`: Dosyayı sadece okuma modunda açar. Dosyanın içeriği değiştirilemez, sadece okunabilir.
+    
+2.  `O_WRONLY`: Dosyayı sadece yazma modunda açar. Dosyanın içeriği okunamaz, sadece değiştirilebilir.
+    
+3.  `O_RDWR`: Dosyayı hem okuma hem de yazma modunda açar. Dosya içeriğini okuyabilir ve değiştirebilirsiniz.
+    
+4.  `O_CREAT`: Eğer dosya yoksa, yeni bir dosya oluşturur. Bu bayrak, dosya açma işleminin yeni bir dosya oluşturma işlemi için kullanılacağını belirtir.
+    
+5.  `O_TRUNC`: Dosya varsa, içeriğini temizler (sıfırlar). Dosyayı açarken içeriği silmek ve dosyayı boşaltmak için kullanılır.
+    
+6.  `O_APPEND`: Dosya varsa, dosyanın sonuna ekler. Yani, her yazma işlemi dosyanın sonuna eklenir, varolan içeriği değiştirmez.
+    
+7.  `O_EXCL`: Dosya varsa, hata döndürür. Bu bayrak, `O_CREAT` bayrağıyla birlikte kullanılır ve eğer dosya zaten varsa hata döndürür.
+    
+8.  `O_TRUNC | O_CREAT`: Eğer dosya varsa içeriğini siler, eğer dosya yoksa yeni bir dosya oluşturur. Bu bayrak, dosya içeriğini sıfırlayarak mevcut dosyayı kullanmak için kullanılır.
+
+```c
+#include <fcntl.h>  
+#include <unistd.h>  
+int  main() { 
+	int fd; 
+// Dosyayı yazma modunda (write-only) aç 
+	fd = open("example.txt", O_WRONLY); 
+	if (fd == -1) { 
+		perror("Dosya acilamadi"); 
+		return  1; 
+	} 
+// Dosyayı kapat 
+	close(fd); 
+	return  0; 
+	}
+```
 ## Typedef Nedir?
 
 "typedef" C dilinde bir anahtar kelimedir ve bir türden yeni bir tür adı tanımlar. Örneğin, aşağıdaki kod parçacığı "unsigned long" türüne "ul" adını verir:
@@ -206,7 +317,7 @@ Eğer üstteki tam sayı dizisini dizi\[1]\[1] şeklinde yazdırmak isteseydik b
 # Bonus Kisim
 - Bonus kisimin, yapi mantigini ve  en cok kullanilan (sanirim) yapi turlerinden biri olan bagli listeyi ogrenmemizi amacladigini dusunuyorum.
 
-### Nasıl Liste Oluşturulur? Struct Nedir?
+### Struct Nedir?
 
 C dilinde yapı/struct, veri yapılarının bir koleksiyonudur. Yapılar, birbirleriyle ilişkili verilerin bir arada saklanması için kullanılır. Yapılar, bir dizi değişkenin bir arada saklanmasını sağlar ve bu değişkenlerin her birine özel bir ad verilebilir. Örneğin, bir öğrenci yapısı oluşturarak, bir öğrencinin adını, numarasını ve notlarını saklayabilirsiniz.
 
@@ -241,7 +352,7 @@ Bağlı listeler, C dilinde "t_list" yapısı kullanılarak tanımlanabilir. Bu 
 
 Bağlı listeler, çeşitli veri yapılarının oluşturulmasında kullanılabilir. Örneğin, bir kuyruk (queue) veya bir yığın (stack) gibi veri yapıları oluşturulabilir. Ayrıca, verilerin sıralı bir şekilde saklanması ve aranması gibi işlemlerde de kullanılabilir.
 
-### Bonus Kısım da Libft'ye Eklenen Struct Yapısı Nedir?
+### Bonus Kısım da Libft'ye Eklenen Struct Nedir?
 
 typedef, C dilinde bir tür tanımlamayı yapmanızı sağlar. Örneğin, libft.h dosyasına eklediğimiz kod bloğunda "t_list" olarak bir tür tanımlanmıştır ve bu tür "struct s_list" yapısına eşitlenmiştir. Bu sayede, "t_list" türünü "struct s_list" yerine kullanabilirsiniz.
 
