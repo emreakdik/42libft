@@ -245,27 +245,6 @@ Bu kod parçacığında, x değişkeni int türünde ve değeri 5'tir. Daha sonr
 
 Cast işleminin dikkatli kullanılması gerekir, çünkü bazen verinin türü değiştirilemez veya verinin değeri anlamsız hale gelebilir. Örneğin, bir ondalık sayıyı tamsayı türüne dönüştürürken, ondalık kısım atılır ve sonuç ona göre oluşacaktır.
 
-### "dst + i" Nedir?
-
-"dst + i" ifadesi, C dilinde bir dizinin bir elemanına erişmek için kullanılabilir. "dst" dizi adıdır ve "i" değişkeni dizinin kaçıncı elemanına erişmek istediğimizi belirtir. Örneğin:
-
-```c
-int dst[10];
-
-// dst dizisinin 3. elemanına erişmek için
-int x = dst[2];
-
-// dst dizisinin 3. elemanına değer atamak için
-dst[2] = 5;
-
-// dst dizisinin 3. elemanına ulaşmanın farklı bir yolu.
-int x = *(dst + 2);
-```
-
-Bu örneklerde görüldüğü gibi, dizinin bir elemanına erişmek için "dst\[i]" yapısı kullanılabilir veya "\*(dst + i)" yapısı da kullanılabilir. Bu ikisi arasında bir fark yoktur ve ikisi de aynı şeyi yapar.
-
-Not: Dizinin ilk elemanı "dst\[0]" olarak, ikinci elemanı "dst\[1]" olarak, üçüncü elemanı "dst\[2]" olarak gibi tanımlanır. Bu nedenle, dizinin 3. elemanını "dst\[2]" yapısıyla erişiriz.
-
 ### strcpy ve memcpy farkı nedir?
 
 C dilinde "strcpy" ve "memcpy" fonksiyonları, iki dizi arasında veri kopyalama işlemi yapar. Ancak, iki fonksiyon arasında bazı farklılıklar vardır:
